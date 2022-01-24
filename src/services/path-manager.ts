@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { parse } from 'path';
-import { HomePath, ManifestPath } from '../config/gitgrok-server.config';
+import { HomePath, ManifestPath } from '../configs/gitgrok-server.config';
 
 @Injectable()
 export class PathManager {

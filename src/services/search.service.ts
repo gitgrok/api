@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { GrepService } from '@onivoro/server-git';
 import { PathManager } from './path-manager';
-import { RepositoryService } from './repository.service';
+import { RepositoryService } from './repo.service';
 import { ResultTransformer } from './result-transformer';
 
 @Injectable()

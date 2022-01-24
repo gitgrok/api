@@ -1,31 +1,32 @@
 import { Body, Controller, Get, Put, Logger, Param } from '@nestjs/common';
 import { CreateRepoDto } from 'src/dtos/create-repo.dto';
-import { RepositoryService } from '../services/repository.service';
+import { RepoService } from 'src/services/repo.service';
+
 
 @Controller('repos')
-export class RepositoryController {
-  logger = new Logger(RepositoryController.name);
+export class RepoController {
+  logger = new Logger(RepoController.name);
 
-  constructor(private readonly repositoryService: RepositoryService) {}
+  constructor(private readonly repositoryService: RepoService) {}
 
   @Get()
   async list() {
-    return this.repositoryService.list().toPromise();
+    return this.repositoryService.list();
   }
 
   @Get(':url/branches')
   async branches(@Param() url: string) {
-    return await this.repositoryService.get(url).toPromise();
+    return await this.repositoryService.get(url);
   }
 
   @Get(':url/open-repo')
   async openRepo(@Param() url: string) {
-    return await this.repositoryService.openRepo(url).toPromise();
+    return await this.repositoryService.openRepo(url);
   }
 
   @Put('open-dir')
   async openDir(@Body() dto: CreateRepoDto) {
-    return await this.repositoryService.openDir(dto.url).toPromise();
+    return await this.repositoryService.openDir(dto.url);
   }
 
   @Put()
@@ -33,7 +34,7 @@ export class RepositoryController {
     console.warn('body', body)
     return await this.repositoryService
       .track(body.url)
-      .toPromise()
+      
       .then(() => {
         this.logger.log('success');
       })
