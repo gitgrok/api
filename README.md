@@ -3,15 +3,6 @@
 ## CONFIGURING THE API
 
 ```
-AUTHSECRET=
-AUTHIGNOREEXPIRATION=true
-DATABASE=defaultdb
-DBCERT=ca-certificate.crt
-DBHOST=db-postgresql-nyc1-337-do-user-1369794-0.b.db.ondigitalocean.com
-DBPASSWORD=
-DBPORT=25060
-DBSYNC=true
-DBUSERNAME=doadmin
 PORT=7777 # arbitrary choice
 ```
 
