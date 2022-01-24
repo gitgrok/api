@@ -35,7 +35,9 @@ export class RepoService {
   }
 
   track(url: string) {
-    return this.clone(url).then(() => this.updateManifest(url));
+    this.logger.debug(url);
+    return this.clone(url)
+    //.then(() => this.updateManifest(url));
   }
 
   private updateManifest(url) {
