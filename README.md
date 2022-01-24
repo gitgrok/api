@@ -1,4 +1,4 @@
-# ART-IND-INC-API
+# API
 
 ## CONFIGURING THE API
 
@@ -12,7 +12,7 @@ DBPASSWORD=
 DBPORT=25060
 DBSYNC=true
 DBUSERNAME=doadmin
-PORT=3338 # arbitrary choice
+PORT=7777 # arbitrary choice
 ```
 
 ## DEVELOPING LOCALLY
@@ -23,7 +23,7 @@ PORT=3338 # arbitrary choice
 
 ### VIEWING THE API-DOCS
 
-start the server and hit => `http://localhost:3338/api-docs/`
+start the server and hit => `http://localhost:7777/api-docs/`
 
 ### EXECUTING THE API-DOCS
 
@@ -33,15 +33,15 @@ start the server and hit => `http://localhost:3338/api-docs/`
 
 #### SIGNUP TO CREATE USER
 
-`curl http://localhost:3338/auth/signup -X POST -H 'Content-Type: application/json' -d '{"username": "your.email@here.com", "password": "your-password", "data": {"anything": "here"}}'`
+`curl http://localhost:7777/auth/signup -X POST -H 'Content-Type: application/json' -d '{"username": "your.email@here.com", "password": "your-password", "data": {"anything": "here"}}'`
 
 #### SIGNIN TO GET JWT TOKEN
 
-`curl http://localhost:3338/auth/signin -X POST -H 'Content-Type: application/json' -d '{"username": "your.email@here.com", "password": "your-password"}'` 
+`curl http://localhost:7777/auth/signin -X POST -H 'Content-Type: application/json' -d '{"username": "your.email@here.com", "password": "your-password"}'` 
 
 #### HIT API WITH TOKEN TO RETRIEVE USERS
 
-`curl http://localhost:3338/ -X GET -H 'Authorization: Bearer put-token-hash-here'` 
+`curl http://localhost:7777/ -X GET -H 'Authorization: Bearer put-token-hash-here'` 
 
 ## CONCEPTS
 
@@ -51,8 +51,8 @@ start the server and hit => `http://localhost:3338/api-docs/`
 
 ### BUILDING AND RUNNING DOCKER IMAGE LOCALLY
 
-`docker build -t art-ind-inc-api .`
-`docker run --env-file=.env -p 3338:3338 art-ind-inc-api`
+`docker build -t api .`
+`docker run --env-file=.env -p 7777:7777 api`
 
 ## MANDATORY CONVENTIONS
 
