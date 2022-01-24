@@ -1,4 +1,3 @@
-import { SSL_OP_ALL } from 'constants';
 import { readFileSync } from 'fs';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';

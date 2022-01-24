@@ -1,14 +1,11 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { exec as execCb } from 'child_process';
 import { resolve } from 'path';
-import { Observable, of } from 'rxjs';
-import { catchError, concatMap, defaultIfEmpty, map, tap } from 'rxjs/operators';
-import { ManifestPath } from '../configs/gitgrok-server.config';
 import { PathManager } from './path-manager';
 import { promisify } from 'util';
 import { RepoRepository } from 'src/modules/db-typeorm/repositories/repo.repository';
 
-const exec = promisify(execCb);
+const exec = (...args) => promisify(execCb).apply(null, ...args).then(r => r.stdout);
 
 @Injectable()
 export class RepoService {
@@ -29,7 +26,6 @@ export class RepoService {
   }
 
   constructor(
-    private readonly manifestPath: ManifestPath,
     private readonly pathManager: PathManager,
     private readonly repoRepository: RepoRepository
   ) { }

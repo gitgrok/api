@@ -1,6 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { GitGrokPort, GitgrokServerConfig, HomePath, ManifestPath } from './configs/gitgrok-server.config';
+import { RepoController } from './controllers/repo.controller';
 import { EntitiesModule } from './modules/db-typeorm/entities.module';
+import { PathManager } from './services/path-manager';
+import { RepoService } from './services/repo.service';
+import { ResultTransformer } from './services/result-transformer';
 
 @Module({})
 export class AppModule {
@@ -10,7 +15,8 @@ export class AppModule {
         EntitiesModule.forFun(),
         TypeOrmModule.forRoot(dbConfig),
       ],
-      controllers: [],
+      controllers: [RepoController],
+      providers: [RepoService, PathManager, ResultTransformer, GitgrokServerConfig, ManifestPath, GitGrokPort, HomePath],
       module: AppModule,
     };
   }

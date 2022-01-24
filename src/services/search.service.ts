@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { GrepService } from '@onivoro/server-git';
 import { PathManager } from './path-manager';
-import { RepositoryService } from './repo.service';
+import { RepoService } from './repo.service';
 import { ResultTransformer } from './result-transformer';
 
 @Injectable()
@@ -9,7 +9,7 @@ export class SearchService {
   logger = new Logger(SearchService.name);
 
   constructor(
-    private repositorySvc: RepositoryService,
+    private repositorySvc: RepoService,
     private pathMgr: PathManager,
     private resultTformer: ResultTransformer,
     private readonly grepService: GrepService
@@ -17,11 +17,10 @@ export class SearchService {
 
   searchV2(_payload: string, pathFilter: string) {
     return this.repositorySvc
-      .list()
-      .toPromise()
+     .list()
       .then((list) =>
         Promise.all(
-          list.map((url: string) => {
+          list.map(({url}) => {
             const cwd = this.pathMgr.extractProjectDirFromUrl(url);
             return this.grepService
               .grepForLinesMatching(_payload, cwd, pathFilter)
