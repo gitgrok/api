@@ -32,14 +32,14 @@ export class RepoController {
   @Put()
   async track(@Body() body: CreateRepoDto) {
     console.warn('body', body)
-    return await this.repositoryService
-      .track(body.url)
+    return await Promise.resolve(this.repositoryService
+      .track(body.url))
       
-      .then(() => {
-        this.logger.log('success');
-      })
-      .catch((e) => {
-        this.logger.warn(e);
-      });
+      // .then(() => {
+        // this.logger.log('success');
+      // })
+      // .catch((e) => {
+        // this.logger.warn(e);
+      // });
   }
 }

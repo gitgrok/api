@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { exec as execCb } from 'child_process';
+import { exec as execCb, execSync } from 'child_process';
 import { resolve } from 'path';
 import { PathManager } from './path-manager';
 import { promisify } from 'util';
@@ -36,8 +36,9 @@ export class RepoService {
 
   track(url: string) {
     this.logger.debug(url);
-    return this.clone(url)
+    this.clone(url)
     //.then(() => this.updateManifest(url));
+    this.updateManifest(url);
   }
 
   private updateManifest(url) {
@@ -57,9 +58,10 @@ export class RepoService {
     const project = this.pathManager.extractProjectDirFromUrl(url);
     const target = resolve(cwd, project);
     const cloneCmd = `git clone ${url} ${target}`;
-    return exec(`cd ${cwd} && ${cloneCmd}`).catch(
-      () =>
-        exec(`mkdir -p ${cwd} && ${cloneCmd}`)
-    );
+    try {
+      execSync(`cd ${cwd} && ${cloneCmd}`);
+    } catch (e) {
+      execSync(`mkdir -p ${cwd} && ${cloneCmd}`)
+    }
   }
 }
