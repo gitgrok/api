@@ -6,7 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "gen": " openapi-generator-cli generate -i api.json -g typescript-axios",
+    "gen": "rm -rf api && mkdir api && openapi-generator-cli generate -i api.json -g typescript-axios -o api",
     "local": "npm run start:dev",
     "prettier": "npm run format --write",
     "prebuild": "rimraf dist",
