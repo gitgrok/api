@@ -5,6 +5,9 @@
   "author": "lee.e.norris@gmail.com",
   "private": true,
   "license": "UNLICENSED",
+  "exports": {
+    ".": "./api/dist/index.js"
+  },
   "scripts": {
     "gen": "rm -rf api && mkdir api && openapi-generator-cli generate -i api.json -g typescript-axios -o api",
     "local": "npm run start:dev",
