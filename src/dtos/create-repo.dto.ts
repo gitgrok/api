@@ -1,4 +1,3 @@
-
 export class CreateRepoDto {
-    url: string;
+  url: string;
 }

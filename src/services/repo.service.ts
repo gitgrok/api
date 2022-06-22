@@ -5,7 +5,10 @@ import { PathManager } from './path-manager';
 import { promisify } from 'util';
 import { RepoRepository } from 'src/modules/db-typeorm/repositories/repo.repository';
 
-const exec = (...args) => promisify(execCb).apply(null, ...args).then(r => r.stdout);
+const exec = (...args) =>
+  promisify(execCb)
+    .apply(null, ...args)
+    .then((r) => r.stdout);
 
 @Injectable()
 export class RepoService {
@@ -27,8 +30,8 @@ export class RepoService {
 
   constructor(
     private readonly pathManager: PathManager,
-    private readonly repoRepository: RepoRepository
-  ) { }
+    private readonly repoRepository: RepoRepository,
+  ) {}
 
   list() {
     return this.repoRepository.get();
@@ -36,13 +39,13 @@ export class RepoService {
 
   track(url: string) {
     this.logger.debug(url);
-    this.clone(url)
+    this.clone(url);
     //.then(() => this.updateManifest(url));
     this.updateManifest(url);
   }
 
   private updateManifest(url) {
-    this.repoRepository.put([{ url }])
+    this.repoRepository.put([{ url }]);
   }
 
   private dedup(arr: string[]) {
@@ -61,7 +64,7 @@ export class RepoService {
     try {
       execSync(`cd ${cwd} && ${cloneCmd}`);
     } catch (e) {
-      execSync(`mkdir -p ${cwd} && ${cloneCmd}`)
+      execSync(`mkdir -p ${cwd} && ${cloneCmd}`);
     }
   }
 }

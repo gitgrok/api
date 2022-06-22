@@ -20,6 +20,6 @@ export class GitgrokServerConfig {
   constructor(
     public readonly manifestPath: ManifestPath,
     public readonly homePath: HomePath,
-    public readonly port: GitGrokPort
+    public readonly port: GitGrokPort,
   ) {}
 }

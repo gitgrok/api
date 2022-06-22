@@ -1,6 +1,4 @@
-import { Injectable } from '@nestjs/common';
-import { parse } from 'path';
-import { HomePath, ManifestPath } from '../config/gitgrok-server.config';
+import { HomePath, ManifestPath } from 'src/configs/gitgrok-server.config';
 import { PathManager } from './path-manager';
 const ng = 'https://github.com/angular/angular-cli.git';
 const homePath: HomePath = { value: 'HOMEPATH' } as any;
@@ -12,9 +10,9 @@ describe(PathManager.name, () => {
       PathManager.prototype.extractProjectDirFromUrl.name,
       (url: string) => {
         expect(
-          new PathManager(homePath, manifestPath).extractProjectDirFromUrl(url)
+          new PathManager(homePath, manifestPath).extractProjectDirFromUrl(url),
         ).toMatchSnapshot();
-      }
+      },
     );
   });
 
@@ -23,9 +21,11 @@ describe(PathManager.name, () => {
       PathManager.prototype.extractProjectDirFromUrl.name,
       (url: string) => {
         expect(
-          new PathManager(homePath, manifestPath).extractDirToConeInFromUrl(url)
+          new PathManager(homePath, manifestPath).extractDirToConeInFromUrl(
+            url,
+          ),
         ).toMatchSnapshot();
-      }
+      },
     );
   });
 });

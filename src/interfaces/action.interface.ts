@@ -1,3 +1,3 @@
 export interface IAction {
-    type: string;
+  type: string;
 }

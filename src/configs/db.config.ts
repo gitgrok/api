@@ -21,7 +21,7 @@ export const dbConfig: IDbConfig = {
 
 function ssl() {
   if (process.env.DBCERTVALUE) {
-    return { ca: process.env.DBCERTVALUE as string }
+    return { ca: process.env.DBCERTVALUE as string };
   }
 
   if (process.env.DBCERT) {

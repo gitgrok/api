@@ -6,7 +6,7 @@ import { HomePath, ManifestPath } from '../configs/gitgrok-server.config';
 export class PathManager {
   constructor(
     private readonly homePath: HomePath,
-    private readonly manifestPath: ManifestPath
+    private readonly manifestPath: ManifestPath,
   ) {}
 
   getManifestPath() {
@@ -16,7 +16,7 @@ export class PathManager {
   getHomeDirectory(scmProviderPath?: string): string {
     return `${this.homePath.value}/${scmProviderPath || ''}/`.replace(
       '//',
-      '/'
+      '/',
     );
   }
 

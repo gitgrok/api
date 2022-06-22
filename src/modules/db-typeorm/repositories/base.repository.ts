@@ -15,7 +15,7 @@ export abstract class BaseRepository<TEntity> {
 
   async post(entities: DeepPartial<TEntity>[]) {
     const metadata = await this.getRepository().insert(entities);
-    return metadata.identifiers.map((id, i) => ({...entities[i], id: id.id}))
+    return metadata.identifiers.map((id, i) => ({ ...entities[i], id: id.id }));
   }
 
   async delete(id: string[]) {

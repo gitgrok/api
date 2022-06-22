@@ -9,13 +9,13 @@ import { serverConfig } from './configs/server.config';
 import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
-  const {corsOrigin: origin, port} = serverConfig;
+  const { corsOrigin: origin, port } = serverConfig;
   const app = await NestFactory.create(AppModule.forRoot(dbConfig));
-  
-  app.enableCors(origin && {origin});
+
+  app.enableCors(origin && { origin });
   app.enableShutdownHooks();
   app.use(cookieParser());
-  
+
   SwaggerModule.setup(
     'api-docs',
     app,

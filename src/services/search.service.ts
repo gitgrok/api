@@ -12,15 +12,15 @@ export class SearchService {
     private repositorySvc: RepoService,
     private pathMgr: PathManager,
     private resultTformer: ResultTransformer,
-    private readonly grepService: GrepService
+    private readonly grepService: GrepService,
   ) {}
 
   searchV2(_payload: string, pathFilter: string) {
     return this.repositorySvc
-     .list()
+      .list()
       .then((list) =>
         Promise.all(
-          list.map(({url}) => {
+          list.map(({ url }) => {
             const cwd = this.pathMgr.extractProjectDirFromUrl(url);
             return this.grepService
               .grepForLinesMatching(_payload, cwd, pathFilter)
@@ -29,8 +29,8 @@ export class SearchService {
                 this.logger.warn(e);
                 return null;
               });
-          })
-        )
+          }),
+        ),
       )
       .then((results) => results.filter((r) => r));
   }
