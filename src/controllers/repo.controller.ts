@@ -18,12 +18,12 @@ export class RepoController {
   }
 
   @Get(':url/branches')
-  async branches(@Param() url: string) {
+  async branches(@Param('url') url: string) {
     return await this.repositoryService.get(url);
   }
 
   @Get(':url/open-repo')
-  async openRepo(@Param() url: string) {
+  async openRepo(@Param('url') url: string) {
     return await this.repositoryService.openRepo(url);
   }
 

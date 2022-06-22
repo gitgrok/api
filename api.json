@@ -19,7 +19,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "repos"
+        ]
       },
       "put": {
         "operationId": "RepoController_track",
@@ -38,13 +41,25 @@
           "200": {
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "repos"
+        ]
       }
     },
     "/repos/{url}/branches": {
       "get": {
         "operationId": "RepoController_branches",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "url",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -56,13 +71,25 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "repos"
+        ]
       }
     },
     "/repos/{url}/open-repo": {
       "get": {
         "operationId": "RepoController_openRepo",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "url",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -74,7 +101,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "repos"
+        ]
       }
     },
     "/repos/open-dir": {
@@ -102,29 +132,10 @@
               }
             }
           }
-        }
-      }
-    },
-    "/e/n/v": {
-      "get": {
-        "operationId": "EnvController_getAll",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/e/n/v/{name}": {
-      "get": {
-        "operationId": "EnvController_getOne",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
+        },
+        "tags": [
+          "repos"
+        ]
       }
     },
     "/query": {
@@ -145,7 +156,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "query"
+        ]
       }
     }
   },

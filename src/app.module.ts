@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GrepService } from '@onivoro/server-git';
-import { EnvController } from '@onivoro/server-parameterization';
 import {
   GitGrokPort,
   GitgrokServerConfig,
@@ -21,7 +20,7 @@ export class AppModule {
   static forRoot(dbConfig: any) {
     return {
       imports: [EntitiesModule.forFun(), TypeOrmModule.forRoot(dbConfig)],
-      controllers: [RepoController, EnvController, QueryController],
+      controllers: [RepoController, QueryController],
       providers: [
         RepoService,
         PathManager,
