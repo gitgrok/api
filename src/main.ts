@@ -7,6 +7,8 @@ import { dbConfig } from './configs/db.config';
 import { readFile } from 'fs/promises';
 import { serverConfig } from './configs/server.config';
 import * as cookieParser from 'cookie-parser';
+import { writeFileSync } from 'fs';
+import { resolve } from 'path';
 
 async function bootstrap() {
   const { corsOrigin: origin, port } = serverConfig;
@@ -16,20 +18,16 @@ async function bootstrap() {
   app.enableShutdownHooks();
   app.use(cookieParser());
 
-  SwaggerModule.setup(
-    'api-docs',
-    app,
-    SwaggerModule.createDocument(
-      app,
-      new DocumentBuilder()
-        .setTitle('API DOCUMENTATION')
-        .setDescription('')
-        .setVersion(
-          JSON.parse(await readFile('./package.json', 'utf-8')).version,
-        )
-        .build(),
-    ),
-  );
+  const options = new DocumentBuilder()
+    .setTitle('API DOCUMENTATION')
+    .setDescription('')
+    .setVersion(JSON.parse(await readFile('./package.json', 'utf-8')).version)
+    .build();
+
+  const document = SwaggerModule.createDocument(app, options);
+  SwaggerModule.setup('api-docs', app, document);
+
+  writeFileSync(resolve(`api.json`), JSON.stringify(document, null, 2));
 
   await app.listen(port);
 }

@@ -7,9 +7,13 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { SearchService } from '../services/search.service';
 
-@Controller('search')
+const prefix = 'search';
+
+@ApiTags(prefix)
+@Controller(prefix)
 export class SearchController {
   logger = new Logger(SearchController.name);
 

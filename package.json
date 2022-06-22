@@ -6,6 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "gen": "ng-openapi-gen --config=openapi-gen.config.json",
     "local": "npm run start:dev",
     "prettier": "npm run format --write",
     "prebuild": "rimraf dist",
@@ -69,6 +70,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "^27.2.5",
+    "ng-openapi-gen": "^0.21.2",
     "prettier": "^2.3.2",
     "source-map-support": "^0.5.20",
     "supertest": "^6.1.3",

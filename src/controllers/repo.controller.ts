@@ -1,8 +1,12 @@
 import { Body, Controller, Get, Put, Logger, Param } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { CreateRepoDto } from 'src/dtos/create-repo.dto';
 import { RepoService } from 'src/services/repo.service';
 
-@Controller('repos')
+const prefix = 'repos';
+
+@ApiTags(prefix)
+@Controller(prefix)
 export class RepoController {
   logger = new Logger(RepoController.name);
 
