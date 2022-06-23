@@ -12,6 +12,7 @@ import { PathManager } from './services/path-manager';
 import { QueryService } from './services/query.service';
 import { RepoService } from './services/repo.service';
 import { ResultTransformer } from './services/result-transformer';
+import { SearchService } from './services/search.service';
 
 @Module({})
 export class AppModule {
@@ -26,6 +27,7 @@ export class AppModule {
         GitgrokServerConfig,       
         QueryService,
         GrepService,
+        SearchService
       ],
       module: AppModule,
     };

@@ -17,9 +17,12 @@ class GitGrokPort extends Parameter<string> {
 
 @Injectable()
 export class GitgrokServerConfig {
+  manifestPath = new ManifestPath();
+  homePath = new HomePath();
+  port = new GitGrokPort();
   constructor(
-    public readonly manifestPath: ManifestPath,
-    public readonly homePath: HomePath,
-    public readonly port: GitGrokPort,
-  ) {}
+    // public readonly manifestPath: ManifestPath,
+    // public readonly homePath: HomePath,
+    // public readonly port: GitGrokPort,
+  ) { }
 }
