@@ -144,13 +144,36 @@
         "parameters": [],
         "responses": {
           "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "query"
+        ]
+      }
+    },
+    "/search/v2/{term}": {
+      "get": {
+        "operationId": "SearchController_v2",
+        "parameters": [
+          {
+            "name": "term",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
             "description": "",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "type": "string"
+                    "type": "object"
                   }
                 }
               }
@@ -158,7 +181,41 @@
           }
         },
         "tags": [
-          "query"
+          "search"
+        ]
+      }
+    },
+    "/search": {
+      "post": {
+        "operationId": "SearchController_search",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "search"
         ]
       }
     }
@@ -175,29 +232,28 @@
     "schemas": {
       "Repo": {
         "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "data": {
-            "type": "object"
-          },
-          "url": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id"
-        ]
+        "properties": {}
       },
       "CreateRepoDto": {
         "type": "object",
+        "properties": {}
+      },
+      "SearchDto": {
+        "type": "object",
         "properties": {
+          "term": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
           "url": {
             "type": "string"
           }
         },
         "required": [
+          "term",
+          "path",
           "url"
         ]
       }

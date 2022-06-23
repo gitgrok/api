@@ -9,6 +9,7 @@ import { serverConfig } from './configs/server.config';
 import * as cookieParser from 'cookie-parser';
 import { writeFileSync } from 'fs';
 import { resolve } from 'path';
+import { initOpenapi } from './init-openapi';
 
 async function bootstrap() {
   const { corsOrigin: origin, port } = serverConfig;
@@ -17,8 +18,11 @@ async function bootstrap() {
   app.enableCors(origin && { origin });
   app.enableShutdownHooks();
   app.use(cookieParser());
+
+  await initOpenapi(app);
   
   await app.listen(port);
 }
 
 bootstrap();
+

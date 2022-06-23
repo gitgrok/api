@@ -8,6 +8,7 @@ import {
   // Query,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { SearchDto } from 'src/dtos/search.dto';
 import { SearchService } from '../services/search.service';
 
 const prefix = 'search';
@@ -29,7 +30,7 @@ export class SearchController {
 
   @Post()
   async search(
-    @Body() { term, path }: { term: string; path: string; url: string },
+    @Body() { term, path }: SearchDto,
   ) {
     return this.searchService.searchV2(term, path);
   }
