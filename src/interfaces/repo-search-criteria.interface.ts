@@ -1,6 +1,6 @@
 import { IBranch } from './branch.interface';
-import { IRepo } from './repo';
-import { ISearchCriteria } from './search-criteria';
+import { IRepo } from './repo.interface';
+import { ISearchCriteria } from './search-criteria.interface';
 
 export interface IRepoSearchCriteria {
   repo: IRepo;

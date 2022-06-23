@@ -3,15 +3,15 @@ import { Env, Parameter } from '@onivoro/server-parameterization';
 import { resolve } from 'path';
 
 @Env(String, 'GITGROK_MANIFEST')
-export class ManifestPath extends Parameter<string> {
+class ManifestPath extends Parameter<string> {
   value = resolve('~/.gitgrok/.manifest');
 }
 @Env(String, 'GITGROK_HOME')
-export class HomePath extends Parameter<string> {
+class HomePath extends Parameter<string> {
   value = resolve('~/.gitgrok');
 }
 @Env(String, 'GITGROK_PORT')
-export class GitGrokPort extends Parameter<string> {
+class GitGrokPort extends Parameter<string> {
   value = 7777;
 }
 

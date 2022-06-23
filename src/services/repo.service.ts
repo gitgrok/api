@@ -3,7 +3,7 @@ import { exec as execCb, execSync } from 'child_process';
 import { resolve } from 'path';
 import { PathManager } from './path-manager';
 import { promisify } from 'util';
-import { RepoRepository } from 'src/modules/db-typeorm/repositories/repo.repository';
+import { RepoRepository } from '../modules/db-typeorm/repositories/repo.repository';
 
 const exec = (...args) =>
   promisify(execCb)

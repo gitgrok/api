@@ -16,9 +16,6 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false    ,
-    "paths": {
-      "@gitgrok/core": ["src/interfaces/interfaces.index.ts"]
-    }
+    "noFallthroughCasesInSwitch": false    
   }
 }

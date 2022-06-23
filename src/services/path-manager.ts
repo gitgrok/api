@@ -1,27 +1,26 @@
 import { Injectable } from '@nestjs/common';
 import { parse } from 'path';
-import { HomePath, ManifestPath } from '../configs/gitgrok-server.config';
+import { GitgrokServerConfig } from '../configs/gitgrok-server.config';
 
 @Injectable()
 export class PathManager {
   constructor(
-    private readonly homePath: HomePath,
-    private readonly manifestPath: ManifestPath,
+    private readonly config: GitgrokServerConfig    
   ) {}
 
-  getManifestPath() {
-    return this.manifestPath;
+  getManifestPath() {    
+    return this.config.manifestPath.value;
   }
 
   getHomeDirectory(scmProviderPath?: string): string {
-    return `${this.homePath.value}/${scmProviderPath || ''}/`.replace(
+    return `${this.config.homePath.value}/${scmProviderPath || ''}/`.replace(
       '//',
       '/',
     );
   }
 
   extractDirToConeInFromUrl(url: string): string {
-    return parse(`${this.homePath.value}/${url.split('https://')[1]}`).dir;
+    return parse(`${this.config.homePath.value}/${url.split('https://')[1]}`).dir;
   }
 
   extractProjectDirFromUrl(url: string): string {

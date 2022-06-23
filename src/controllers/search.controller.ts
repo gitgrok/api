@@ -5,7 +5,7 @@ import {
   Logger,
   Param,
   Post,
-  Query,
+  // Query,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { SearchService } from '../services/search.service';
@@ -21,10 +21,10 @@ export class SearchController {
 
   @Get('v2/:term')
   async v2(
-    @Param() params: { term: string },
-    @Query('pathFilter') pathFilter: string,
+    @Param('term') term: string,
+    // @Query('pathFilter') pathFilter: string,
   ) {
-    return this.searchService.searchV2(params.term, pathFilter);
+    return this.searchService.searchV2(term, '');
   }
 
   @Post()

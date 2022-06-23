@@ -1,4 +1,4 @@
-import { IFileSearchResult } from './file-search-result';
+import { IFileSearchResult } from './file-search-result.interface';
 
 export interface IRepoSearchResult {
   fileList: string[];

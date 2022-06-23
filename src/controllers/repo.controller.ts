@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Put, Logger, Param } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { CreateRepoDto } from 'src/dtos/create-repo.dto';
-import { RepoService } from 'src/services/repo.service';
+import { CreateRepoDto } from '../dtos/create-repo.dto';
+import { RepoService } from '../services/repo.service';
 
 const prefix = 'repos';
 

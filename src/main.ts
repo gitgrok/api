@@ -17,18 +17,7 @@ async function bootstrap() {
   app.enableCors(origin && { origin });
   app.enableShutdownHooks();
   app.use(cookieParser());
-
-  const options = new DocumentBuilder()
-    .setTitle('API DOCUMENTATION')
-    .setDescription('')
-    .setVersion(JSON.parse(await readFile('./package.json', 'utf-8')).version)
-    .build();
-
-  const document = SwaggerModule.createDocument(app, options);
-  SwaggerModule.setup('api-docs', app, document);
-
-  writeFileSync(resolve(`api.json`), JSON.stringify(document, null, 2));
-
+  
   await app.listen(port);
 }
 

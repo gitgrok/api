@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { parse } from 'path';
-import { IFileSearchResult } from 'src/interfaces/file-search-result';
-import { IRepoSearchResult } from 'src/interfaces/repo-search-result';
+import { IFileSearchResult } from 'src/interfaces/file-search-result.interface';
+import { IRepoSearchResult } from 'src/interfaces/repo-search-result.interface';
 
 @Injectable()
 export class ResultTransformer {
